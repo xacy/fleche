@@ -3,10 +3,14 @@
 > A simple fencing pools and tournament manager
 
 ##Todo
+* Integration with firebase to persists the data
+* Poule rules component
+* Poule group visualization
+* Poule encounters
+* Printing css
 
+##Done
 * Add bootstrap
 * initial participants manager: basic data (name, club, rating)
-* Integration with firebase to persists the data
 * Fencer component
-* Pool participants component
-* Pool rules component
+* Poule participants component

@@ -7,7 +7,7 @@
     </div>
     <div class="form-inline">
       <div class="form-group mb-2">
-        <label for="fencerClub">Fencer club:</label>
+        <label for="fencerClub">Fencer club: </label>
         <select class="form-control" id="fencerClub" v-model="fencer.club">
           <option value="1">VCE</option>
           <option value="2">SAES-BU</option>
@@ -16,7 +16,7 @@
         </select>
       </div>
       <div class="form-group mx-sm-3 mb-2">
-        <label for="fencerRating">Example select</label>
+        <label for="fencerRating">Standing: </label>
         <select class="form-control" id="fencerRating" v-model="fencer.standing">
           <option>A</option>
           <option>B</option>
