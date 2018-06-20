@@ -30,9 +30,10 @@
         <!-- Begin page content -->
         <main role="main" class="container">
             <h1 class="mt-5">Participants added</h1>
-            <fencer-data v-for="fencer in fencers" v-show="fencers.length>0" :fencer="fencer"></fencer-data>
-            <add-fencer @fencerAdded="fencerAdded"></add-fencer>
-            <poule-group :fencersData="fencers"></poule-group>
+            <!--<add-fencer @fencerAdded="fencerAdded"></add-fencer>-->
+            <button type="submit" class="btn btn-primary mb-2" @click="distributeFencersInPools">Distribuir</button>
+            <!--<poule-group :fencersData="fencers"></poule-group>-->
+            <poule-group v-for="(group,index) in poolFencers" :fencersData="group" :pouleNumber="index"></poule-group>
         </main>
     </div>
 </template>
@@ -41,23 +42,64 @@
     import AddFencer from './components/AddFencer.vue';
     import FencerData from './components/Fencer.vue';
     import PouleGroup from './components/PouleGroup.vue';
+
     export default {
         name: 'app',
         components: {
             AddFencer,
             FencerData,
-            PouleGroup
+            PouleGroup,
+
         },
         data () {
             return {
                 msg: 'Welcome to Your Vue.js App',
-                fencers: [{name: 'Example', club: 1, standing: 'A'}]
+                fencers: [{name: 'Example', club: 1, standing: 'A'},{name: 'Example2', club: 2, standing: 'A'},{name: 'Example3', club: 1, standing: 'A'}
+                    ,{name: 'Example4', club: 1, standing: 'B'},{name: 'Example5', club: 2, standing: 'A'},{name: 'Exampl6', club: 3, standing: 'B'}
+                    ,{name: 'Example7', club: 1, standing: 'B'},{name: 'Example8', club: 2, standing: 'B'},{name: 'Example9', club: 3, standing: 'B'}
+                    ,{name: 'Example10', club: 1, standing: 'C'},{name: 'Example11', club: 2, standing: 'C'},{name: 'Example12', club: 1, standing: 'C'}
+
+                ],
+                poolFencers:[]
             }
         },
         methods:{
             fencerAdded: function ( fencerAdded ) {
                 console.log("fencer added "+fencerAdded.name);
                 this.fencers.push(fencerAdded);
+            },
+            distributeFencersInPools(){
+                if(this.fencers.length>0){
+                    if(this.fencers.length%10==0){
+                        this.divideArrayInChunks(10);
+                    }
+                    else if(this.fencers.length%9==0){
+                        this.divideArrayInChunks(9);
+                    }
+                    else if(this.fencers.length%8==0){
+                        this.divideArrayInChunks(8);
+                    }
+                    else if(this.fencers.length%7==0){
+                        this.divideArrayInChunks(7);
+                    }
+                    else if(this.fencers.length%6==0){
+                        this.divideArrayInChunks(6);
+                    }
+                    else if(this.fencers.length%5==0){
+                        this.divideArrayInChunks(5);
+                    }
+                }
+            },
+            divideArrayInChunks(poolSize){
+                console.log("multiplo de "+poolSize);
+                let i=0;
+                let divider= Math.floor(this.fencers.length / poolSize);
+                let size= this.fencers.length/divider;
+                console.log("data: "+size+" - "+this.fencers.length);
+                while (i < this.fencers.length) {
+                    this.poolFencers.push(this.fencers.slice(i, i += size));
+                }
+
             }
         }
     }

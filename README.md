@@ -5,8 +5,9 @@
 ##Todo
 * Integration with firebase to persists the data
 * Poule rules component
-* Poule group visualization
-* Poule encounters
+  * Set fencers number per Standing in the group
+  * Set fencers number per Club in the group
+* Basic poule matching
 * Printing css
 
 ##Done
@@ -14,3 +15,6 @@
 * initial participants manager: basic data (name, club, rating)
 * Fencer component
 * Poule participants component
+* Poule encounters
+* Poule group visualization
+* Basic poule groups divide
