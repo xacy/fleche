@@ -9,6 +9,7 @@
   * Set fencers number per Club in the group
 * Basic poule matching
 * Printing css
+* Rules component: text -> text clickable -> "alert" with select
 
 ##Done
 * Add bootstrap

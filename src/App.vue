@@ -13,10 +13,13 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Participants</a>
+                            <a class="nav-link" href="#">Fencers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Pools</a>
+                            <a class="nav-link" href="#">Rules</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Poules</a>
                         </li>
                     </ul>
                     <form class="form-inline mt-2 mt-md-0">
@@ -29,11 +32,14 @@
 
         <!-- Begin page content -->
         <main role="main" class="container">
-            <h1 class="mt-5">Participants added</h1>
+            <h1 class="mt-5">Fencers added</h1>
+            <!--<h2>Fencers</h2>
+            <fencer-data v-for="fencer in fencers" :key="fencer.id" :fencer="fencer"></fencer-data>-->
             <!--<add-fencer @fencerAdded="fencerAdded"></add-fencer>-->
+            <poule-rules></poule-rules>
             <button type="submit" class="btn btn-primary mb-2" @click="distributeFencersInPools">Distribuir</button>
             <!--<poule-group :fencersData="fencers"></poule-group>-->
-            <poule-group v-for="(group,index) in poolFencers" :fencersData="group" :pouleNumber="index"></poule-group>
+            <poule-group v-for="(group,index) in poolFencers" :key="index" :fencersData="group" :pouleNumber="index" ></poule-group>
         </main>
     </div>
 </template>
@@ -42,6 +48,7 @@
     import AddFencer from './components/AddFencer.vue';
     import FencerData from './components/Fencer.vue';
     import PouleGroup from './components/PouleGroup.vue';
+    import PouleRules from './components/PouleRules.vue';
 
     export default {
         name: 'app',
@@ -49,15 +56,16 @@
             AddFencer,
             FencerData,
             PouleGroup,
+            PouleRules
 
         },
         data () {
             return {
                 msg: 'Welcome to Your Vue.js App',
-                fencers: [{name: 'Example', club: 1, standing: 'A'},{name: 'Example2', club: 2, standing: 'A'},{name: 'Example3', club: 1, standing: 'A'}
-                    ,{name: 'Example4', club: 1, standing: 'B'},{name: 'Example5', club: 2, standing: 'A'},{name: 'Exampl6', club: 3, standing: 'B'}
-                    ,{name: 'Example7', club: 1, standing: 'B'},{name: 'Example8', club: 2, standing: 'B'},{name: 'Example9', club: 3, standing: 'B'}
-                    ,{name: 'Example10', club: 1, standing: 'C'},{name: 'Example11', club: 2, standing: 'C'},{name: 'Example12', club: 1, standing: 'C'}
+                fencers: [{id: 1,name: 'Example', club: 1, standing: 'A'},{id: 2,name: 'Example2', club: 2, standing: 'A'},{id: 3,name: 'Example3', club: 1, standing: 'A'}
+                    ,{id: 4,name: 'Example4', club: 1, standing: 'B'},{id: 5,name: 'Example5', club: 2, standing: 'A'},{id:6,name: 'Example6', club: 3, standing: 'B'}
+                    ,{id: 7,name: 'Example7', club: 1, standing: 'B'},{id: 8,name: 'Example8', club: 2, standing: 'B'},{id: 9,name: 'Example9', club: 3, standing: 'B'}
+                    ,{id: 10,name: 'Example10', club: 1, standing: 'C'},{id: 11,name: 'Example11', club: 2, standing: 'C'},{id: 12,name: 'Example12', club: 1, standing: 'C'}
 
                 ],
                 poolFencers:[]

@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(fencer, index) in fencers">
+                <tr v-for="(fencer, index) in fencers" :key="fencer.id">
                     <td> {{ fencer.name }} {{fencer.standing}} {{ fencer.club}}</td>
                     <td> {{ index +1 }} </td>
                     <td v-for="(fencer, intIndex) in fencers" :class="index==intIndex?'same':''">

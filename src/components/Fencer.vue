@@ -19,6 +19,7 @@
         name: "Fencer",
         props:{
           fencer: {
+            id: Number,
             name: String,
             club: String,
             standing: String
